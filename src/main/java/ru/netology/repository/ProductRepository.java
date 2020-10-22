@@ -21,8 +21,9 @@ public class ProductRepository {
 
     public Product findById(int id) {
         for (Product item : items) {
-            if (item.getId() == id)
+            if (item.getId() == id) {
                 return item;
+            }
         }
         return null;
     }
@@ -35,11 +36,10 @@ public class ProductRepository {
             Product[] tmp = new Product[length];
             int index = 0;
             for (Product item : items) {
-                if (item.getId() == id) {
-                    continue;
+                if (item.getId() != id) {
+                    tmp[index] = item;
+                    index++;
                 }
-                tmp[index] = item;
-                index++;
             }
             items = tmp;
             System.out.println("repo done");
